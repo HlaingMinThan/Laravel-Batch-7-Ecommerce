@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $latestDiscountProduct = Product::where("discount_percentage", ">", 0)
-        ->orderBy("id", "desc")->first();
+        ->orderBy("id", "asc")->first(); //1 2 3
+    $mostSoldProducts = Product::where("most_sell", true)->get();
     return view('home', [
         "products" => Product::all(),
         "categories" => Category::all(),
-        "latestDiscountProduct" => $latestDiscountProduct
+        "latestDiscountProduct" => $latestDiscountProduct,
+        "mostSoldProducts" => $mostSoldProducts
     ]);
 });
 Route::get('/products', function () {

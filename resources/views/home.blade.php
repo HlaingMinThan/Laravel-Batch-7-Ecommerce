@@ -203,6 +203,7 @@
             Most Sold in eTrade Store
         </h1>
         <div class="grid md:grid-cols-2 mt-[30px] gap-[30px] mb-[100px] grid-cols-1">
+            @foreach ($mostSoldProducts as $product)
             <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
                 <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
                     <img
@@ -226,12 +227,17 @@
                             </p>
                         </div>
                         <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
+                            {{$product->name}}
                         </h1>
                         <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
+                            <p class="text-2xl font-bold">
+                                @php
+                                $discountPrice = ($product->price/100) * $product->discount_percentage;
+                                @endphp
+                                ${{$discountPrice}}
+                            </p>
                             <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
+                                ${{$product->price}}
                             </p>
                         </div>
                     </div>
@@ -247,227 +253,7 @@
                     </div>
                 </div>
             </div>
-            <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
-                <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
-                        class="w-full h-full hover:scale-[1.1] transition-all"
-                        src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-09.png"
-                        alt=""
-                    />
-                </div>
-                <div class="flex items-center justify-between w-full">
-                    <div c>
-                        <div class="flex items-center gap-[10px]">
-                            <div class="text-yellow-400 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                            <p class="text-gray-500 text-sm font-semibold">
-                                <span class="font-bold text-black">100+</span> Reviews
-                            </p>
-                        </div>
-                        <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
-                        </h1>
-                        <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
-                            <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
-                <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
-                        class="w-full h-full hover:scale-[1.1] transition-all"
-                        src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-09.png"
-                        alt=""
-                    />
-                </div>
-                <div class="flex items-center justify-between w-full">
-                    <div c>
-                        <div class="flex items-center gap-[10px]">
-                            <div class="text-yellow-400 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                            <p class="text-gray-500 text-sm font-semibold">
-                                <span class="font-bold text-black">100+</span> Reviews
-                            </p>
-                        </div>
-                        <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
-                        </h1>
-                        <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
-                            <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
-                <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
-                        class="w-full h-full hover:scale-[1.1] transition-all"
-                        src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-09.png"
-                        alt=""
-                    />
-                </div>
-                <div class="flex items-center justify-between w-full">
-                    <div c>
-                        <div class="flex items-center gap-[10px]">
-                            <div class="text-yellow-400 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                            <p class="text-gray-500 text-sm font-semibold">
-                                <span class="font-bold text-black">100+</span> Reviews
-                            </p>
-                        </div>
-                        <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
-                        </h1>
-                        <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
-                            <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
-                <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
-                        class="w-full h-full hover:scale-[1.1] transition-all"
-                        src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-09.png"
-                        alt=""
-                    />
-                </div>
-                <div class="flex items-center justify-between w-full">
-                    <div c>
-                        <div class="flex items-center gap-[10px]">
-                            <div class="text-yellow-400 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                            <p class="text-gray-500 text-sm font-semibold">
-                                <span class="font-bold text-black">100+</span> Reviews
-                            </p>
-                        </div>
-                        <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
-                        </h1>
-                        <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
-                            <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border hover:shadow-lg transition-all flex gap-[30px] border-[1px] border-[#eee] p-[30px]">
-                <div class="w-[150px] bg-[#F7F7F7] rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
-                        class="w-full h-full hover:scale-[1.1] transition-all"
-                        src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-09.png"
-                        alt=""
-                    />
-                </div>
-                <div class="flex items-center justify-between w-full">
-                    <div c>
-                        <div class="flex items-center gap-[10px]">
-                            <div class="text-yellow-400 text-xs">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                            <p class="text-gray-500 text-sm font-semibold">
-                                <span class="font-bold text-black">100+</span> Reviews
-                            </p>
-                        </div>
-                        <h1 class="text-lg font-semibold py-[10px] hover:text-blue-500 cursor-pointer">
-                            Media Remote
-                        </h1>
-                        <div class="flex items-center gap-3">
-                            <p class="text-2xl font-bold">$29.99</p>
-                            <p class="text-xl font-bold text-slate-300 line-through">
-                                $49.99
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div
-                            class="w-[40px] h-[40px] hover:text-white flex items-center hover:bg-blue-500 transition-all justify-center rounded-md bg-white border border-[1px] border-[#eee]">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div></div>
+            @endforeach
         </div>
     </section>
 </x-layout>
