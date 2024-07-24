@@ -19,9 +19,11 @@
     </div>
     <div class="mt-32 px-[40px]">
         <div class="grid mt-[40px] gap-[20px] lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-            @foreach ($products as $product)
+            @forelse ($products as $product)
             <x-product-card :product="$product"></x-product-card>
-            @endforeach
+            @empty
+            <p>no products found...</p>
+            @endforelse
         </div>
     </div>
 </x-layout>

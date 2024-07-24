@@ -106,15 +106,20 @@
             </div>
         </div>
         <div class=" py-[40px] px-[20px]">
-            <div class=" mt-[20px]">
+            <div class="flex justify-around mt-[20px]">
                 @foreach ($categories as $category)
-                <div class="bg-white shadow-md rounded-md category-card py-[20px] flex items-center flex-col">
+                <a
+                    href="/categories/{{$category->name}}"
+                    class="bg-white shadow-md rounded-md category-card py-[20px] flex items-center flex-col"
+                >
                     <img
                         src="{{$category->icon}}"
                         alt=""
+                        width="100"
+                        height="100"
                     />
                     <p class="font-semibold pt-2">{{$category->name}}</p>
-                </div>
+                </a>
                 @endforeach
             </div>
         </div>
@@ -186,6 +191,7 @@
             @foreach ($products as $product)
             <x-product-card :product="$product"></x-product-card>
             @endforeach
+            {{$products->links()}}
         </div>
         <div
             class="flex w-[20%] mx-auto text-white my-[60px] blue-button animate-btn py-[15px] rounded-[5px] transition-all items-center justify-center gap-2">
