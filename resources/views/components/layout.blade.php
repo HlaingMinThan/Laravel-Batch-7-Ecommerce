@@ -120,7 +120,7 @@
                         <a href="#">About</a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">Blog</a>
+                        <a href="/blogs">Blog</a>
                     </li>
                     <li class="nav-link">
                         <a href="#">Contact</a>

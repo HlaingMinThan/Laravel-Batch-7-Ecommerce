@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
         Category::factory(5)
             ->has(Product::factory()->count(10))
             ->create();
+        Blog::factory(100)->create();
     }
 }

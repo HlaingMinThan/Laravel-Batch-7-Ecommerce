@@ -14,7 +14,7 @@ class ProductController extends Controller
             ->orderBy("id", "asc")->first(); //1 2 3
         $mostSoldProducts = Product::where("most_sell", true)->get();
         return view('home', [
-            "products" => Product::paginate(8),
+            "products" => Product::with('category')->paginate(8), //eager or lazy ?
             "categories" => Category::all(),
             "latestDiscountProduct" => $latestDiscountProduct,
             "mostSoldProducts" => $mostSoldProducts
