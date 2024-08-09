@@ -127,7 +127,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex md:gap-[30px] gap-[15px] text-xl">
+            <div class="flex md:gap-[30px] gap-[15px] text-xl items-center">
                 <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
@@ -140,9 +140,41 @@
                         class="absolute w-[20px] rounded-full top-[-8px] border border-2 border-white right-[-10px] h-[20px] text-xs font-bold text-white flex items-center justify-center bg-blue-400"
                     >3</span>
                 </div>
-                <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
-                    <i class="fa-regular fa-user"></i>
+                <div class="nav-icon md:text-base text-sm ">
+                    <a href="/locales/mm">MM</a>/
+                    <a href="/locales/en">EN</a>
                 </div>
+                @auth
+                <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
+                    {{-- <i class="fa-regular fa-user"></i> --}}
+                    {{auth()->user()->name}}
+                </div>
+                <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
+                    {{-- <i class="fa-regular fa-user"></i> --}}
+                    <form
+                        action="/logout"
+                        method="POST"
+                    >
+                        @csrf
+                        <button
+                            type="submit"
+                            class="bg-red-500 text-white px-3 py-2 rounded-lg"
+                        >logout</button>
+                    </form>
+                </div>
+                @else
+                <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
+                    <a
+                        href="/login"
+                        class="border border-blue-500 text-black px-3 py-2 rounded-lg"
+                    >Sign in</a>
+                    <a
+                        href="/register"
+                        class="bg-blue-500 text-white px-3 py-2 rounded-lg"
+                    >Sign Up</a>
+                </div>
+                @endauth
+
                 <div
                     class="lg:hidden md:text-base text-sm block"
                     id="menuShowIcon"

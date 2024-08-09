@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //accesor or getter
+    public function getUsernameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    //mutator or setter
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = ucfirst($value);
+    }
 }

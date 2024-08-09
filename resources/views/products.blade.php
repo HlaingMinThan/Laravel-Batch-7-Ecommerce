@@ -1,5 +1,6 @@
 <x-layout>
     <div class="mt-32">
+        <h1 class="text-center font-bold text-2xl my-3">{{__('products.products')}}</h1>
         <form action="">
             <div class="w-[60%] mx-auto flex py-2 bg-black rounded-lg px-3">
                 <input

@@ -14,7 +14,7 @@
                 </div>
                 <h1
                     class="xl:text-[60px] lg:text-[50px] md:w-full sm:w-[70%] w-full md:text-[40px] text-[30px] md:text-start text-center font-bold leading-[1.2] py-[10px]">
-                    Smart Digital Watch
+                    {{__('messages.welcome')}}
                 </h1>
                 <div
                     class="flex w-full lg:items-center md:items-start items-center lg:flex-row flex-col gap-[30px] mt-[40px]">

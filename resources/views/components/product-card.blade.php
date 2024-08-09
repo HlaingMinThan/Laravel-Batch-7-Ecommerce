@@ -28,6 +28,8 @@
         <div class="pb-[40px]">
             <h1 class="pt-[20px] text-lg font-semibold text-slate-600 hover:text-blue-500 cursor-pointer">
                 {{$product->name}}
+
+                <span class="text-blue-500">({{$product->discount_percentage}} % off)</span>
                 <span class="text-blue-500">({{$product->category->name}})</span>
             </h1>
             <div class="flex items-center gap-3">
