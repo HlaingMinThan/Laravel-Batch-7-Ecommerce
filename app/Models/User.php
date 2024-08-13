@@ -57,4 +57,10 @@ class User extends Authenticatable
     {
         $this->attributes['username'] = ucfirst($value);
     }
+
+    // a user hasone cart
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

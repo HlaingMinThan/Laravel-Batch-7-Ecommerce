@@ -19,9 +19,18 @@
                     doloribus aut suscipit, velit, facere modi fuga commodi consequatur
                     quis!
                 </p>
-                <button class="px-14 py-5 font-bold bg-[#0067C7] text-white rounded-lg mt-10">
-                    Checkout
-                </button>
+                <form
+                    action="/add-to-cart/{{$product->id}}"
+                    method="POST"
+                >
+                    @csrf
+                    <button
+                        type="submit"
+                        class="px-14 py-5 font-bold bg-[#0067C7] text-white rounded-lg mt-10"
+                    >
+                        Add to cart
+                    </button>
+                </form>
             </div>
         </div>
     </div>

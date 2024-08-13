@@ -134,12 +134,19 @@
                 <div class="nav-icon md:text-base text-sm hover:text-white delay-300">
                     <i class="fa-regular fa-heart"></i>
                 </div>
-                <div class="nav-icon md:text-base text-sm relative hover:text-white delay-300">
+                @auth
+                <a
+                    href="/checkout"
+                    class="nav-icon md:text-base text-sm relative  delay-300"
+                >
                     <i class="fa-solid fa-cart-shopping"></i>
+                    @if (auth()->user()->cart?->cart_items->count())
                     <span
                         class="absolute w-[20px] rounded-full top-[-8px] border border-2 border-white right-[-10px] h-[20px] text-xs font-bold text-white flex items-center justify-center bg-blue-400"
-                    >3</span>
-                </div>
+                    >{{auth()->user()->cart?->cart_items->count()}}</span>
+                    @endif
+                </a>
+                @endauth
                 <div class="nav-icon md:text-base text-sm ">
                     <a href="/locales/mm">MM</a>/
                     <a href="/locales/en">EN</a>

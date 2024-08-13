@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
@@ -15,7 +16,10 @@ Route::get('/blogs', [BlogController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index'])->middleware(MustBeLoginUser::class);
 Route::get('/products/{product:slug}', [ProductController::class, 'show']);
 Route::get('/categories/{category:name}', [CategoryController::class, 'index']);
-Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index'])
+    ->middleware(MustBeLoginUser::class);
+Route::post('/add-to-cart/{product}', [CartController::class, 'store'])->middleware(MustBeLoginUser::class);
+Route::post("/cart_items/{cart_item}/delete", [CartController::class, 'destroy'])->middleware(MustBeLoginUser::class);
 Route::get('/register', [RegisterController::class, 'create']); // user create
 Route::post('/register', [RegisterController::class, 'store']); // user create
 Route::get('/login', [LoginController::class, 'create']); // user logout 

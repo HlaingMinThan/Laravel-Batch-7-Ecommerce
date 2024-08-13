@@ -9,6 +9,11 @@
                     <td class="py-6 px-4">Price</td>
                     <td class="py-6 px-4">Action</td>
                 </tr>
+                @php
+                $cartItems = auth()->user()->cart?->cart_items()->paginate(3);
+                @endphp
+                @if ($cartItems->count())
+                @foreach ($cartItems->load('product') as $cart_item)
                 <tr class="border-b-[1px] border-gray-300">
                     <td class="py-6 px-4">
                         <img
@@ -17,50 +22,34 @@
                             alt=""
                         />
                     </td>
-                    <td class="py-6 px-4">Head Phone</td>
-                    <td class="py-6 px-4">$1000</td>
+                    <td class="py-6 px-4">{{$cart_item->product->name}}</td>
+                    <td class="py-6 px-4">${{$cart_item->product->price}}</td>
                     <td class="py-6 px-4">
-                        <button class="border-[1px] border-gray-300 py-3 px-5">
-                            Cancel
-                        </button>
+                        <form
+                            action="/cart_items/{{$cart_item->id}}/delete"
+                            method="POST"
+                        >
+                            @csrf
+                            <button
+                                type="submit"
+                                class="border-[1px] border-gray-300 py-3 px-5"
+                            >
+                                Cancel
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <tr class="border-b-[1px] border-gray-300">
-                    <td class="py-6 px-4">
-                        <img
-                            class="w-[70px] h-[70px]"
-                            src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619440b10530ec35eb0ab72_wepik-export-20240412141328GIah-p-1080.webp"
-                            alt=""
-                        />
-                    </td>
-                    <td class="py-6 px-4">Head Phone</td>
-                    <td class="py-6 px-4">$1000</td>
-                    <td class="py-6 px-4">
-                        <button class="border-[1px] border-gray-300 py-3 px-5">
-                            Cancel
-                        </button>
-                    </td>
-                </tr>
-                <tr class="border-b-[1px] border-gray-300">
-                    <td class="py-6 px-4">
-                        <img
-                            class="w-[70px] h-[70px]"
-                            src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619440b10530ec35eb0ab72_wepik-export-20240412141328GIah-p-1080.webp"
-                            alt=""
-                        />
-                    </td>
-                    <td class="py-6 px-4">Head Phone</td>
-                    <td class="py-6 px-4">$1000</td>
-                    <td class="py-6 px-4">
-                        <button class="border-[1px] border-gray-300 py-3 px-5">
-                            Cancel
-                        </button>
-                    </td>
-                </tr>
+                @endforeach
+
+                @endif
+
             </table>
+            <div class="my-4">
+                {{$cartItems?->links()}}
+            </div>
             <div class="flex items-center text-2xl gap-10 mt-10 font-bold">
-                <p>Toatal :</p>
-                <p>$5000</p>
+                <p>Total :</p>
+                <p>${{$cartItems->load('product')->sum('product.price') ?? 0}}</p>
             </div>
             <button class="py-5 px-20 bg-[#0067C7] text-white font-bold rounded-lg mt-10">
                 Order
