@@ -281,6 +281,12 @@
             </div>
         </div>
     </header>
+    @if (session('success'))
+    <div class="bg-green-300 text-white p-4 my-[100px] w-[90%] mx-auto">
+        {{session('success')}}
+    </div>
+    @endif
+
     {{ $slot }}
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>

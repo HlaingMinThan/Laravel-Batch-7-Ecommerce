@@ -6,6 +6,8 @@ use App\Models\Blog;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +22,11 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(3)
             ->has(Cart::factory()->count(1))
+            ->has(
+                Order::factory()
+                    ->has(OrderItem::factory()->count(3))
+                    ->count(3)
+            )
             ->create();
         Category::factory(5)
             ->has(Product::factory()->count(10))

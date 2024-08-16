@@ -14,10 +14,11 @@ class CartController extends Controller
         if (!auth()->user()->cart) {
             $cart = new Cart();
             $cart->user_id = auth()->id();
-            $cart->save();
+            $cart->save();//created
+        } else {
+            $cart = auth()->user()->cart;
         }
 
-        $cart = auth()->user()->cart;
 
         $cart_item = new CartItem();
         $cart_item->cart_id = $cart->id;

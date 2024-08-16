@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\MustBeLoginUser;
@@ -22,6 +23,7 @@ Route::post('/add-to-cart/{product}', [CartController::class, 'store'])->middlew
 Route::post("/cart_items/{cart_item}/delete", [CartController::class, 'destroy'])->middleware(MustBeLoginUser::class);
 Route::get('/register', [RegisterController::class, 'create']); // user create
 Route::post('/register', [RegisterController::class, 'store']); // user create
+Route::post('/orders/store', [OrderController::class, 'store']); // order create
 Route::get('/login', [LoginController::class, 'create']); // user logout 
 Route::post('/login', [LoginController::class, 'store']); //
 Route::post('/logout', [LogoutController::class, 'destroy']); // user logout 

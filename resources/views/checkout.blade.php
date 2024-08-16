@@ -51,9 +51,38 @@
                 <p>Total :</p>
                 <p>${{$cartItems->load('product')->sum('product.price') ?? 0}}</p>
             </div>
-            <button class="py-5 px-20 bg-[#0067C7] text-white font-bold rounded-lg mt-10">
-                Order
-            </button>
+            <form
+                action="/orders/store"
+                method="POST"
+            >
+                @csrf
+                <input
+                    type="hidden"
+                    name="total_amount"
+                    value="{{$cartItems->load('product')->sum('product.price') ?? 0}}"
+                >
+                <label
+                    for=""
+                    class="font-bold mt-3"
+                >Shipping address</label>
+                <textarea
+                    class="w-full border-[1px] border-gray-300 mt-5 p-5"
+                    name="shipping_address"
+                    id=""
+                    placeholder="Enter your address"
+                    cols="30"
+                    rows="5"
+                ></textarea>
+                @error('shipping_address')
+                <p class="text-red-400">{{$message}}</p>
+                @enderror
+                <button
+                    type="submit"
+                    class="py-5 px-20 bg-[#0067C7] text-white font-bold rounded-lg mt-10"
+                >
+                    Order
+                </button>
+            </form>
         </div>
     </div>
 </x-layout>
