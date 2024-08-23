@@ -18,9 +18,10 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
+        $products = Product::pluck('id');
         return [
             'order_id' => Order::factory(),
-            'product_id' => Product::factory(),
+            'product_id' => fake()->randomElement($products),
             'price' => fake()->numberBetween(100, 1000)
         ];
     }

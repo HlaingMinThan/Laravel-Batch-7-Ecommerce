@@ -18,9 +18,10 @@ class CartItemFactory extends Factory
      */
     public function definition(): array
     {
+        $products = Product::pluck('id');
         return [
             'cart_id' => Cart::factory(),
-            'product_id' => Product::factory(),
+            'product_id' => fake()->randomElement($products),
         ];
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger("category_id");
             $table->string("price"); //100
             $table->string("slug")->unique();
-            $table->boolean("discount_percentage"); //20
+            $table->integer("discount_percentage"); //20
             $table->timestamps();
         });
     }

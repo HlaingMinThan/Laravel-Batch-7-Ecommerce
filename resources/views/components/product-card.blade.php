@@ -3,7 +3,7 @@
         <div class="bg-[#F6F7FB] overflow-hidden h-[300px] product-card relative rounded-md">
             <img
                 class="w-full h-full transition-all hover:scale-[1.1]"
-                src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/electric/product-01.png"
+                src="{{$product->image}}"
                 alt=""
             />
             @if ($product->discount_percentage)

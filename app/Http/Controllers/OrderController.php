@@ -38,4 +38,10 @@ class OrderController extends Controller
         auth()->user()?->cart?->cart_items()->delete();
         return back()->with('success', 'Order created successfully');
     }
+
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return back();
+    }
 }

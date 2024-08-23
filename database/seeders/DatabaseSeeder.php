@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Category::factory(5)
+            ->has(Product::factory()->count(10))
+            ->create();
         User::factory(3)
             ->has(Cart::factory()->count(1))
             ->has(
@@ -27,9 +30,6 @@ class DatabaseSeeder extends Seeder
                     ->has(OrderItem::factory()->count(3))
                     ->count(3)
             )
-            ->create();
-        Category::factory(5)
-            ->has(Product::factory()->count(10))
             ->create();
         Blog::factory(100)->create();
 
