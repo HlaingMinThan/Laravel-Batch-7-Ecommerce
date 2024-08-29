@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
@@ -25,10 +26,12 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::where("name", "LIKE", "%" . request('search') . "%")->get();
-
         return view('products', [
-            "products" => $products
+            "products" => Product::filter([
+                'search' => request('search'),
+                'tag' => request('tag')
+            ])->get(),
+            "tags" => Tag::all()
         ]);
     }
 
@@ -75,7 +78,6 @@ class ProductController extends Controller
         return view('admin.products', [
             'products' => $products
         ]);
-        
     }
 
     public function edit(Product $product)

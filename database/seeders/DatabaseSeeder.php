@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -37,5 +38,8 @@ class DatabaseSeeder extends Seeder
         $carts->each(function ($cart) {
             CartItem::factory(5)->create(['cart_id' => $cart->id]); //15
         });
+        Tag::factory(3)
+            ->has(Product::factory()->count(3))
+            ->create();
     }
 }

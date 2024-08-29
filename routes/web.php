@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\MustBeLoginUser;
 use App\Mail\OrderShippedMail;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;

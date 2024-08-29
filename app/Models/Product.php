@@ -15,9 +15,20 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-
-    public function orders()
+    // a product belongstomany tags
+    public function tags()
     {
-        return $this->belongsToMany(Order::class, 'order_items', 'product_id', 'order_id');
+        return $this->belongsToMany(Tag::class, 'product_tag', 'product_id', 'tag_id');
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query) {
+            $query->where("name", "LIKE", "%" . request('search') . "%");
+        })->when($filters['tag'] ?? false, function ($query) {
+            $query->whereHas('tags', function ($tagQuery) {
+                $tagQuery->where('id', request('tag'));
+            });
+        });
     }
 }
