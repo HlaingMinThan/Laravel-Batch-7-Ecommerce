@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderConfirm;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -33,9 +35,13 @@ class OrderController extends Controller
             $orderItem->order_id = $order->id;
             $orderItem->product_id = $product['id'];
             $orderItem->price =  $product['price'];
+            $orderItem->quantity =  $product['price'];
             $orderItem->save();
         });
         auth()->user()?->cart?->cart_items()->delete();
+
+        Mail::to(auth()->user())->queue(new OrderConfirm(auth()->user()->name));
+
         return back()->with('success', 'Order created successfully');
     }
 

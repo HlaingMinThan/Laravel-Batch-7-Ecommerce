@@ -34,7 +34,14 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->discount_percentage}}%</td>
-                <td>abc</td>
+                <td>{{$product->category->name}}</td>
+                <td>
+                    <a
+                        href="/admin/products/{{$product->id}}/edit"
+                        class="text-white bg-yellow-500 px-2 py-1 rounded-lg"
+                        type="submit"
+                    >Edit</a>
+                </td>
                 <td>
                     <form
                         action="/admin/products/{{$product->id}}/delete"

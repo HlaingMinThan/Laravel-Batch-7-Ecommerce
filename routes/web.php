@@ -11,7 +11,19 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\MustBeLoginUser;
+use App\Mail\OrderShippedMail;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/send-email', function () {
+    $users = User::pluck('email', 'name')->take(30);
+    $users->each(function ($email, $name) {
+        Mail::to($email)->queue(new OrderShippedMail($name)); //100 -> welcome email
+    });
+
+    return 'email sent to all users';
+});
 
 Route::get('/', [ProductController::class, 'home']);
 Route::get('/blogs', [BlogController::class, 'index']);
@@ -38,5 +50,7 @@ Route::get('/admin/orders', [AdminController::class, 'orders']);
 Route::get('/admin/products', [ProductController::class, 'admin_products']);
 Route::post('/admin/products', [ProductController::class, 'store']);
 Route::get('/admin/products/create', [ProductController::class, 'create']);
+Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit']);
+Route::put('/admin/products/{product}/update', [ProductController::class, 'update']);
 Route::delete('/admin/orders/{order}/delete', [OrderController::class, 'destroy']);
 Route::delete('/admin/products/{product}/delete', [ProductController::class, 'destroy']);
